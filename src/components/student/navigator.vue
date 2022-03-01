@@ -6,7 +6,7 @@
                     <user-filled />
                 </el-icon>基本信息
             </template>
-            <el-menu-item index="/404">学籍信息</el-menu-item>
+            <el-menu-item index="/">学籍信息</el-menu-item>
             <el-menu-item index="/statistics">班级数据</el-menu-item>
         </el-sub-menu>
         <el-sub-menu index="2">
@@ -16,7 +16,7 @@
                 </el-icon>学业表现
             </template>
             <el-menu-item index="/404">学生课表</el-menu-item>
-            <el-menu-item index="/">学业成绩</el-menu-item>
+            <el-menu-item index="/results">学业成绩</el-menu-item>
             <el-menu-item index="/404">学业状态</el-menu-item>
             <el-menu-item index="/404">考勤记录</el-menu-item>
         </el-sub-menu>

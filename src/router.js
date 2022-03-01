@@ -1,8 +1,10 @@
-import Main from './components/main.vue'
+import Student from './components/student/Student.vue'
 import Login from './components/login.vue'
-import results from './components/results.vue'
+import results from './components/student/results.vue'
 import P404 from './components/404.vue'
-import Statistics from './components/statistics.vue'
+import Statistics from './components/student/statistics.vue'
+import ChangePassword from './components/ChangePassword.vue'
+import StudentInfo from './components/student/StudentInfo.vue'
 import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
@@ -12,19 +14,29 @@ const routes = [
         component: Login
     },
     {
+        path: '/changePassword',
+        name: 'changePassword',
+        component: ChangePassword
+    },
+    {
         path: '/',
-        name: 'Main',
-        component: Main,
+        name: 'Student',
+        component: Student,
         children: [
             {
                 path: '/',
-                name: 'Results',
-                component: results
+                name: 'StudentInfo',
+                component: StudentInfo
             },
             {
                 path:'/statistics',
                 name:'Statistics',
                 component:Statistics
+            },
+            {
+                path:'/results',
+                name:'Results',
+                component:results
             }
         ]
     },
