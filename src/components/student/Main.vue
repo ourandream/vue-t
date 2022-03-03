@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import navigator from './navigator.vue';
+import navigator from './Navigator.vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
