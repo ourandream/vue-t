@@ -229,7 +229,7 @@ const rules = reactive({
 }
 
 .change-card {
-    width: 40%;
+    width: 35%;
     text-align: center;
 }
 

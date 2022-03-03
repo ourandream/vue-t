@@ -12,16 +12,6 @@
                     class="demo-ruleForm"
                     :rules="rules"
                 >
-                    <el-form-item label="账户类型">
-                        <el-select v-model="userData.type" default-first-option>
-                            <el-option
-                                v-for="item in types"
-                                :key="item"
-                                :label="item"
-                                :value="item"
-                            ></el-option>
-                        </el-select>
-                    </el-form-item>
                     <el-form-item label="账号" prop="id">
                         <el-input v-model="userData.id" type="text" autocomplete="off"></el-input>
                     </el-form-item>
@@ -33,7 +23,6 @@
                     </div>
                     <el-form-item>
                         <el-button type="primary" @click="login">登录</el-button>
-                        <el-button @click="toAuthentication">统一身份认证</el-button>
                     </el-form-item>
                 </el-form>
             </div>
@@ -49,21 +38,17 @@ import { ElMessage } from 'element-plus'
 const router = useRouter()
 
 let userData = ref({
-    type:'学生',
     id: '',
     password: ''
 })
 
-let types=['学生','教师','管理员']
-
 let users = [
     {
-        type:'学生',
+
         id: "2020",
         password: 'rXt!bY7n!HnpEXL'
     },
     {
-        type:'学生',
         id: "123",
         password: '123456'
     }
@@ -124,6 +109,8 @@ function login() {
     console.log(JSON.stringify(users).includes(JSON.stringify(userData.value)))
     if (JSON.stringify(users).includes(JSON.stringify(userData.value))) {
         sessionStorage.setItem('token', '1234')
+        sessionStorage.setItem('userName',userData.value.id)
+        sessionStorage.setItem('userType','学生')
         router.push({
             path: '/'
         })
@@ -138,7 +125,7 @@ function login() {
         else {
             let userExist = false
             for (let i = 0; i < users.length; ++i) {
-                if (userData.value.id === users[i].id && userData.value.type===users[i].type) {
+                if (userData.value.id === users[i].id) {
                     ElMessage.error('密码错误')
                     userExist = true
                 }
@@ -148,12 +135,6 @@ function login() {
             }
         }
     }
-}
-
-function toAuthentication() {
-    router.push({
-        path: '/404'
-    })
 }
 
 function toChangePassword() {
@@ -191,7 +172,7 @@ function toChangePassword() {
 }
 
 .login-card {
-    width: 40%;
+    width: 35%;
     text-align: center;
 }
 

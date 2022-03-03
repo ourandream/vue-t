@@ -1,4 +1,5 @@
 <template>
+    <user-info></user-info>
     <el-menu :default-openeds="['1', '2']" class="el-menu" router default-active="/">
         <el-sub-menu index="1">
             <template #title>
@@ -72,13 +73,15 @@
 </template>
 
 <script lang="ts" setup>
-import { List,UserFilled,Opportunity, HomeFilled, Histogram, Management, 
-LocationFilled } from '@element-plus/icons-vue'
+import {
+    List, UserFilled, Opportunity, HomeFilled, Histogram, Management,
+    LocationFilled
+} from '@element-plus/icons-vue'
 </script>
 
 <style scoped>
-.el-menu{
+.el-menu {
     border-bottom: 1px solid #e6e6e6;
-    border-right: none
+    border-right: none;
 }
 </style>
