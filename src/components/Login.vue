@@ -18,13 +18,16 @@
                     <el-form-item label="密码" prop="password" style="margin-bottom: 0;">
                         <el-input v-model="userData.password" type="password" autocomplete="off"></el-input>
                     </el-form-item>
-                    <div class="link-block">
-                        <el-link :underline="false" @click="toChangePassword">忘记密码</el-link>
-                    </div>
+
                     <el-form-item>
-                        <el-button type="primary" @click="login">登录</el-button>
+                        <el-row justify="center" style="width:100%;padding-top: 7%;">
+                            <el-button type="primary" @click="login">登录</el-button>
+                        </el-row>
                     </el-form-item>
                 </el-form>
+            </div>
+            <div class="link-block">
+                <el-link :underline="false" @click="toChangePassword">忘记密码</el-link>
             </div>
         </el-card>
     </div>
@@ -109,8 +112,8 @@ function login() {
     console.log(JSON.stringify(users).includes(JSON.stringify(userData.value)))
     if (JSON.stringify(users).includes(JSON.stringify(userData.value))) {
         sessionStorage.setItem('token', '1234')
-        sessionStorage.setItem('userName',userData.value.id)
-        sessionStorage.setItem('userType','学生')
+        sessionStorage.setItem('userName', userData.value.id)
+        sessionStorage.setItem('userType', '学生')
         router.push({
             path: '/'
         })
@@ -146,14 +149,10 @@ function toChangePassword() {
 
 <style scoped>
 .page {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-}
-
-.login-card {
-    text-align: center;
 }
 
 .page::before {
@@ -161,24 +160,30 @@ function toChangePassword() {
     position: absolute;
     top: -3;
     left: -1;
-    height: 102vh;
+    height: 103vh;
     width: 102vw;
-    background-image: url("../assets/loginBg.jpg");
+    background-image: url("../assets/bg.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 30%;
     z-index: -1;
-    filter: blur(3px);
+    filter: blur(12px);
 }
 
 .login-card {
+    box-sizing: border-box;
     width: 35%;
     text-align: center;
+    padding: 0 3%;
+    position: relative;
 }
 
 .link-block {
     width: 100%;
     text-align: right;
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
 }
 
 @media screen and (max-width: 400px) {

@@ -5,7 +5,13 @@
                 <h2>修改密码</h2>
             </div>
             <div class="form-wrapper">
-                <el-form :model="passwordData" status-icon label-position="top" :rules="rules" ref="changeForm">
+                <el-form
+                    :model="passwordData"
+                    status-icon
+                    label-position="top"
+                    :rules="rules"
+                    ref="changeForm"
+                >
                     <el-form-item label="账号" prop="id">
                         <el-input v-model="passwordData.id" type="text" autocomplete="off"></el-input>
                     </el-form-item>
@@ -35,7 +41,9 @@
                     </el-form-item>
 
                     <el-form-item>
-                        <el-button type="primary" @click="confirmChange">确认</el-button>
+                        <el-row justify="center" style="width:100%;">
+                            <el-button type="primary" @click="confirmChange">确认</el-button>
+                        </el-row>
                     </el-form-item>
                 </el-form>
             </div>
@@ -44,7 +52,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref,reactive} from 'vue'
+import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
@@ -52,7 +60,7 @@ const router = useRouter()
 let passwordData = ref({
     id: '',
     newPassword: '',
-    newPasswordCheck:'',
+    newPasswordCheck: '',
     vCode: '',
     tel: ''
 })
@@ -91,7 +99,7 @@ function confirmChange() {
     else if (passwordData.value.vCode === '') {
         ElMessage.error('请输入验证码')
     }
-    else if (passwordData.value.newPassword==='') {
+    else if (passwordData.value.newPassword === '') {
         ElMessage.error('请输入新密码')
     }
     else {
@@ -150,7 +158,7 @@ const chexkPasswordLength = (rule: any, value: string, callback: any) => {
 }
 
 const chexkPasswordSame = (rule: any, value: string, callback: any) => {
-    if (value!==passwordData.value.newPassword) {
+    if (value !== passwordData.value.newPassword) {
         callback(new Error('密码不一致'))
     }
     else {
@@ -187,7 +195,7 @@ const rules = reactive({
             trigger: 'change'
         }
     ],
-    newPasswordCheck:[
+    newPasswordCheck: [
         {
             validator: chexkPasswordSame,
             trigger: 'blur'
@@ -220,12 +228,12 @@ const rules = reactive({
     left: -1;
     height: 102vh;
     width: 102vw;
-    background-image: url("../assets/loginBg.jpg");
+    background-image: url("../assets/bg.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 30%;
     z-index: -1;
-    filter: blur(3px);
+    filter: blur(12px);
 }
 
 .change-card {
